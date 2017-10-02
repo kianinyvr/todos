@@ -54,15 +54,40 @@ const todoList = {
     const todo = this.todos[position];
     todo.isCompleted = !todo.isCompleted;
     this.displayTodos();
+  },
+
+  toggleAll: function () {
+    let completedTodos = 0;
+
+    //count number of todos
+    for (let i = 0; i < this.todos.length; i++) {
+      if(this.todos[i].isCompleted === true) {
+        completedTodos++;
+      }
+    }
+
+    //Case 1: If everything is true, make evrything false
+    if(completedTodos  === this.todos.length) {
+      for (let i = 0; i< this.todos.length; i++) {
+        this.todos[i].isCompleted = false;
+      }
+    } else {
+        for (let i = 0; i < this.todos.length; i++) {
+          this.todos[i].isCompleted = true;
+        }
+      }
+
+    todoList.displayTodos();
   }
 };
 
 todoList.displayTodos();
 todoList.addTodo("take dog for a walk");
 todoList.changeTodo(3, "sell tires");
-todoList.toggleCompleted(0);
-todoList.deleteTodo(0);
-todoList.deleteTodo(0);
-todoList.deleteTodo(0);
-todoList.deleteTodo(0);
+
+todoList.toggleAll();
+todoList.displayTodos();
+
+
+
 
