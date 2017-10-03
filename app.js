@@ -71,6 +71,7 @@ const todoList = {
       for (let i = 0; i< this.todos.length; i++) {
         this.todos[i].isCompleted = false;
       }
+    //Case 2: Make everything true
     } else {
         for (let i = 0; i < this.todos.length; i++) {
           this.todos[i].isCompleted = true;
@@ -81,13 +82,25 @@ const todoList = {
   }
 };
 
-todoList.displayTodos();
-todoList.addTodo("take dog for a walk");
-todoList.changeTodo(3, "sell tires");
+// todoList.displayTodos();
+// todoList.addTodo("take dog for a walk");
+// todoList.changeTodo(3, "sell tires");
 
-todoList.toggleAll();
-todoList.displayTodos();
+// todoList.toggleAll();
+// todoList.displayTodos();
 
+
+$(document).ready(function() {
+    $("#display-todos").click( function() {
+        todoList.displayTodos();
+        console.log("DISPLAYED");
+    });
+
+    $("#toggle-all").click( () => {
+      todoList.toggleAll();
+      console.log("Toggled");
+    })
+});
 
 
 
